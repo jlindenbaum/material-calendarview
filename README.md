@@ -11,7 +11,7 @@ and feel, rather than 100% parity with the platform's implementation.
 Usage
 -----
 
-1. Add `compile 'com.prolificinteractive:material-calendarview:0.2.4'` to your dependencies.
+1. Add `compile 'com.prolificinteractive:material-calendarview:0.2.5'` to your dependencies.
 2. Add `MaterialCalendarView` into your layouts or view hierarchy.
 3. Set a `OnDateChangedListener` or call `MaterialCalendarView.getSelectedDate()` when you need it.
 
@@ -51,7 +51,7 @@ Set the color of the arrows used to page the calendar. Black by default.
 ### selectionColor
 
 Set the color of the date selector. By default this is the color set by
-`?android:attr/colorPrimary` on 5.0+ or `?attr/colorPrimary` from the AppCompat library.
+`?android:attr/colorAccent` on 5.0+ or `?attr/colorAccent` from the AppCompat library.
 
 ### headerTextAppearance
 
