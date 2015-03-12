@@ -25,6 +25,7 @@ import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormat
 import com.prolificinteractive.materialcalendarview.format.TitleFormatter;
 import com.prolificinteractive.materialcalendarview.format.WeekDayFormatter;
 
+import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -74,6 +75,13 @@ public class MaterialCalendarView extends FrameLayout {
                 listener.onDateChanged(MaterialCalendarView.this, date);
             }
         }
+
+        @Override
+        public void dateHasEvent(CalendarDay date) {
+            if (eventDelegate != null) {
+                eventDelegate.dateHasEvent(date);
+            }
+        }
     };
 
     private final OnClickListener onClickListener = new OnClickListener() {
@@ -104,6 +112,7 @@ public class MaterialCalendarView extends FrameLayout {
     private CalendarDay maxDate = null;
 
     private OnDateChangedListener listener;
+    private EventDelegate eventDelegate;
 
     private int accentColor = 0;
     private int arrowColor = Color.BLACK;
@@ -202,6 +211,15 @@ public class MaterialCalendarView extends FrameLayout {
      */
     public void setOnDateChangedListener(OnDateChangedListener listener) {
         this.listener = listener;
+    }
+
+    /**
+     * Sets the delegate to check if a date has an event.
+     *
+     * @param delegate
+     */
+    public void setEventDelegate(EventDelegate delegate) {
+        this.eventDelegate = delegate;
     }
 
     private void updateUi() {

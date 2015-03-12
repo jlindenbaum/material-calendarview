@@ -23,6 +23,7 @@ class MonthView extends GridLayout implements View.OnClickListener {
     public static interface Callbacks {
 
         public void onDateChanged(CalendarDay date);
+        public void dateHasEvent(CalendarDay date);
     }
 
     private Callbacks callbacks;
@@ -159,6 +160,10 @@ class MonthView extends GridLayout implements View.OnClickListener {
             dayView.setupSelection(showOtherDates, day.isInRange(minDate, maxDate), day.getMonth() == ourMonth);
             dayView.setChecked(day.equals(selection));
             calendar.add(DATE, 1);
+
+            if (this.callbacks != null) {
+                this.callbacks.dayHasEvent(day);
+            }
         }
         postInvalidate();
     }
